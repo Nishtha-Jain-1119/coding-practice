@@ -45,3 +45,55 @@ Node* sortList(Node *head){
 
 
 // ---------------------------------------without replacing -> by creating three new linkedlist and joining them---------------------------------------------------
+
+void insert(Node* &tail, Node* curr){
+    tail->next = curr;
+    tail = curr;
+}
+Node* sortList(Node *head){
+    // creating 3 linkedlist for 0,1,2
+    Node* zeroHead = new Node(-1);
+    Node* zeroTail = zeroHead;
+    Node* oneHead = new Node(-1);
+    Node* oneTail = oneHead;
+    Node* twoHead = new Node(-1);
+    Node* twoTail = twoHead;
+
+    Node* curr = head;
+    int val;
+    while(curr != NULL){
+        val = curr->data;
+        if(val == 0){
+            insert(zeroTail,curr);
+        }
+        else if(val == 1){
+            insert(oneTail, curr);
+        }
+        else{
+            insert(twoTail, curr);
+        }
+        curr = curr->next;
+    }
+
+    // joining all three linkeedlists
+
+    if(oneHead->next != NULL){
+        zeroTail->next = oneHead->next;
+        oneTail->next = twoHead->next;
+    }
+    // ones are not present
+    else{
+        zeroTail->next = twoHead->next;
+    }
+
+    twoTail->next = NULL;
+    head = zeroHead->next;
+
+    // deleting the dummy pointers
+    delete zeroHead;
+    delete oneHead;
+    delete twoHead;
+   
+    return head;
+
+}
