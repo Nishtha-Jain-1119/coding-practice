@@ -15,7 +15,12 @@ public:
         this->n = N;
         arr = new int[s];
         next = new int[s];
+        // if(arr[i] = stores an element)
+        // ---point to next (prev) element after stack top element
+        // if(arr[i] = stores nothing)
+        // ---point to next free space in the array 
         top = new int[n];
+        // ---top represent index of top element of each stack
 
         // initialise top[]
         // --using memset
