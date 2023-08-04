@@ -19,3 +19,23 @@ class Solution
         return q;
     }
 };
+// By using recursion
+class Solution
+{
+    void solve(queue<int> &q){
+        // base case
+        if(q.empty()){
+            return;
+        }
+        int x = q.front();
+        q.pop();
+        solve(q);
+        q.push(x);
+    }
+    public:
+    queue<int> rev(queue<int> q)
+    {
+        solve(q);
+        return q;
+    }
+};
