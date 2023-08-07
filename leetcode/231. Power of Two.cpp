@@ -30,7 +30,7 @@ public:
     bool isPowerOfTwo(int n) {
         int ans = 1;
         // edge case
-        if(n==1073741824){
+        if(n==1073741824){   //2 ^ 30
             return true;
         }
         for(int i = 0;i<30;i++)
