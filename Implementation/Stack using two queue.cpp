@@ -1,3 +1,9 @@
+// push (E element)
+// if q1 is empty, enqueue E to q1
+// if q1 is not empty, enqueue all elements from q1 to q2, then enqueue E to q1, and enqueue all elements from q2 back to q1
+// pop
+// dequeue an element from q1
+
 class Stack {
 	// Define the data members.
 
