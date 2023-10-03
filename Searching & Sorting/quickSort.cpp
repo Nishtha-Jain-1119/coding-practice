@@ -29,6 +29,26 @@ int partition(int *arr, int s, int e){
     }
     return pos;
 }
+// -------->> another partion function
+int partition(vector<int>& arr, int low, int high){
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
+    while(i<j){
+        while(arr[i]<=pivot && i<=high){
+            i++;
+        }
+        while(arr[j]>pivot && j>=low){
+            j--;
+        }
+        if(i<j){
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[j], arr[low]);
+    return j;
+}
+// ----------------------------------
 void quickSort(int *arr, int s, int e){
     // base case
     if(s>=e)
