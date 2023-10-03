@@ -13,8 +13,8 @@ void selectionSort(vector<int>&arr) {
         swap(arr[i], arr[min_index]);
     }
 }
-// -----------------------------------------------
-// -----------With Recursion----------------------
+
+// ----------------Recursive----------------------
 void selectionSort(int *arr, int n){
     if(n==0 || n==1)
         return;
