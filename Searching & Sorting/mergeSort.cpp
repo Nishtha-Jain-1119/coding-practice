@@ -43,7 +43,32 @@ void merge(int *arr, int s, int e)
     delete []first;
     delete[] second;
 }
-
+//--------->> another merge function 
+void merge(int *arr, int low, int high){
+    int mid = (low+high)/2;
+    int left = low;
+    int right =  mid+1;
+    vector<int> temp;
+    while(left<=mid && right<=high){
+        if(arr[left]<=arr[right]){
+            temp.push_back(arr[left++]);
+        }
+        else{
+            temp.push_back(arr[right++]);
+        }
+    }
+    while(left<=mid){
+        temp.push_back(arr[left++]);
+    }
+    while(right<=high){
+        temp.push_back(arr[right++]);
+    }
+    for(int i=low;i<=high;i++){
+        arr[i] = temp[i-low];
+    }
+    
+}
+// -------------------------------------------
 void mergeSort(int *arr, int s, int e)
 {
     int mid = (s + e) / 2;
