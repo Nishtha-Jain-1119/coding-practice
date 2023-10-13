@@ -196,3 +196,39 @@ vector<vector<int>> level_Order(Node *root)
     }
     return ans;
 }
+
+// ------------------------ALL TRAVERSAL USING ONE STACK ----------------------------
+void all_traversal(Node* root, vector<int> &pre, vector<int> &in, vector<int> &post){
+    stack<pair<Node *, int>> st;
+    s.push({root, 1});
+    while(!s.empty()){
+        auto it = st.top();
+        st.pop();
+        // this part is for pre
+        // increment 1 to 2
+        // push the left side of tree
+        if(it.second == 1){
+            pre.push_back(it.first->data);
+            it.second++;
+            st.push(it);
+            if(it.first->left){
+                st.push({it.first->left, 1});
+            }
+        }
+        // this is for in
+        // increment 2 to 3
+        // push the right child
+        else if(it.second == 2){
+            in.push_back(it.first->data);
+            it.second++;
+            st.push(it);
+            if(it.first->right){
+                st.push({it.first->right, 1});
+            }
+        }
+        // no need to push it back again
+        else{
+            post.push_back(it.first->data);
+        }
+    }
+}
